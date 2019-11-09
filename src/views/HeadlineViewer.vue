@@ -20,10 +20,7 @@
                     height="100px"
                     width="100px"
                   ></v-img>
-
-                  <a target="_blank" :href="article.url">
-                    <v-card-title>{{article.title}}</v-card-title>
-                  </a>
+                  <v-card-title>{{article.title}}</v-card-title>
                   <v-card-subtitle
                     v-if="article.author && article.author !==''"
                   >{{article.author}}, {{article.source.name}}</v-card-subtitle>
@@ -31,8 +28,12 @@
                     <i>Unknown author</i>
                     , {{article.source.name}}
                   </v-card-subtitle>
-                  <v-card-subtitle>Published at: {{article.publishedAt}}</v-card-subtitle>
+                  <v-card-subtitle>Published on {{Date(article.publishedAt)}}</v-card-subtitle>
                   <v-card-text>{{article.content}}</v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn outlined small target="_blank" :href="article.url">Read More...</v-btn>
+                  </v-card-actions>
                 </v-card>
               </v-hover>
             </v-col>
@@ -67,7 +68,12 @@ export default {
             Authorization: `Bearer ${this.getApiKey}`
           }
         });
-        this.articles = this.response.data.articles;
+        this.articles = this.response.data.articles.map(item => {
+          return {
+            ...item,
+            content: item.content.replace(/\[\+[0-9]* chars\]/, "")
+          };
+        });
         this.numpages = Math.ceil(
           this.response.data.totalResults / this.pagesize
         );
