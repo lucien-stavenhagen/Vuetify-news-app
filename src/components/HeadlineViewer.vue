@@ -9,10 +9,10 @@
         <v-container>
           <v-pagination total-visible="6" v-model="page" :length="this.numpages"></v-pagination>
           <v-row>
-            <v-col :key="i" v-for="(article, i) in this.articles" cols="12" sm="12">
+            <v-col :key="i" v-for="(article, i) in this.articles" cols="12" md="6">
               <v-hover v-slot:default="{hover}">
                 <v-card flat outlined target="_blank" :elevation="hover ? 12 : 0">
-                  <v-img v-if="article.urlToImage" :src="article.urlToImage" max-height="400px"></v-img>
+                  <v-img v-if="article.urlToImage" :src="article.urlToImage"></v-img>
                   <v-img
                     v-else
                     :src="require('../../src/assets/logo.png')"

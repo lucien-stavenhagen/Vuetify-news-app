@@ -7,9 +7,7 @@ const store = new Vuex.Store({
   state: {
     category: "technology",
     apikey: "8ef92321cab1406386812e94a4a4c178",
-    headlinesurl: `https://newsapi.org/v2/top-headlines`,
-    everythingurl: `https://newsapi.org/v2/everything`,
-    sourcesurl: `https://newsapi.org/v2/everything`
+    headlinesurl: `https://newsapi.org/v2/top-headlines`
   },
   getters: {
     getCategory(state) {
@@ -20,9 +18,6 @@ const store = new Vuex.Store({
     },
     getHeadlinesUrl(state) {
       return state.headlinesurl;
-    },
-    getEverythingUrl(state) {
-      return state.everythingurl;
     }
   },
   mutations: {
