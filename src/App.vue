@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HeadlineViewer from "./components/HeadlineViewer";
+import HeadlineViewer from "./views/HeadlineViewer";
 import MainMenuBar from "./components/MainMenuBar";
 import FooterBar from "./components/FooterBar";
 
