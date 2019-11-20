@@ -71,7 +71,10 @@ export default {
         this.articles = this.response.data.articles.map(item => {
           return {
             ...item,
-            content: item.content.replace(/\[\+[0-9]* chars\]/, "")
+            content:
+              item && item.content
+                ? item.content.replace(/\[\+[0-9]* chars\]/, "")
+                : "No content found at this headline."
           };
         });
         this.numpages = Math.ceil(
